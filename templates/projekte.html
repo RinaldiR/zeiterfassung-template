@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titel %}Projects{% endblock %}
+
+{% block inhalt %}
+  <h1>Projects</h1>
+
+  <form method="post">
+    <label>
+      Project Number
+      <input name="number" placeholder="e.g. 1" required>
+    </label>
+    <label>
+      Project Name
+      <input name="name" placeholder="e.g. Hourly" required>
+    </label>
+    <button type="submit">Save</button>
+  </form>
+
+  <h2>All Projects</h2>
+
+  {% if projekte %}
+    <table>
+      <thead>
+        <tr><th>Number</th><th>Name</th></tr>
+      </thead>
+      <tbody>
+        {% for p in projekte %}
+          <tr><td>{{ p["number"] }}</td><td>{{ p["name"] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No projects have been added yet.</p>
+  {% endif %}
+{% endblock %}
